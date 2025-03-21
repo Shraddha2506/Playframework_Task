@@ -39,7 +39,7 @@ class FileController @Inject()(cc: ControllerComponents, fileService: FileServic
     fileService.deleteFile.map {
       case Right(true)  => Ok(Json.toJson(DeleteFromFileResponse(true))) // Numbers deleted
       case Left("File does not exist.") => NotFound(Json.toJson(FailureResponse("File does not exist.")))
-      case Right(false) => Ok(Json.toJson(FailureResponse("File is already empty."))) // File is empty but return 200 OK
+      case Right(false) => UnprocessableEntity(Json.toJson(FailureResponse("File is already empty."))) // File is empty but return 200 OK
       case Left(err)    => InternalServerError(Json.toJson(FailureResponse(err))) // Handle other errors
     }
   }
