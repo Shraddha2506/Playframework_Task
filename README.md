@@ -45,13 +45,19 @@ This project ensures robust validation for all inputs by implementing:
 
 **4. Error Messages for Invalid Input Cases**
 
-- Invalid JSON input → Returns 400 Bad Request with an appropriate message.
-- Negative numbers in request → Returns 400 Bad Request with a message.
-- Start greater than End → Returns 400 Bad Request.
-- Exceeding max numbers per request → Returns 400 Bad Request.
-- File does not exist (on read/delete) → Returns 404 Not Found.
-- File content is empty (on read) → Returns 400 Bad Request.
-- File storage full → Returns 500 Internal Server Error.
+- **Invalid JSON input** → Returns **400 Bad Request** with an appropriate message.  
+- **Negative numbers in request** → Returns **400 Bad Request** with a message.  
+- **Start greater than End** → Returns **400 Bad Request**.  
+- **Exceeding max numbers per request** → Returns **400 Bad Request**.  
+- **File does not exist (on read/delete)** → Returns **404 Not Found**.  
+- **File content is empty (on read)** → Returns **400 Bad Request**.  
+- **File storage full** → Returns **500 Internal Server Error**.  
+
+## Error Handling
+
+- **Returns proper HTTP error responses** for invalid inputs.  
+- **Handles file-related errors gracefully**, including storage limits.  
+- **Uses structured logging** for debugging and monitoring.  
 
 ## Running the Application
 #### Navigate to the project directory
