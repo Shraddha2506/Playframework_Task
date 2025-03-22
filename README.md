@@ -50,15 +50,24 @@ This project ensures robust validation for all inputs by implementing:
 - Ensures that file size does not exceed allowed limits.
 - Prevents writing to a full storage by returning a "Memory Full" error instead of crashing.
 
-**4. Error Messages for Invalid Input Cases**
+## Error Handling  
 
-- **Invalid JSON input** → Returns **400 Bad Request** with an appropriate message.  
-- **Negative numbers in request** → Returns **400 Bad Request** with a message.  
-- **Start greater than End** → Returns **400 Bad Request**.  
-- **Exceeding max numbers per request** → Returns **400 Bad Request**.  
-- **File does not exist (on read/delete)** → Returns **404 Not Found**.  
-- **File content is empty (on read)** → Returns **400 Bad Request**.  
-- **File storage full** → Returns **500 Internal Server Error**.  
+This application includes structured error handling to manage various file-related issues.  
+
+### 1. Input Validation Errors  
+- **Invalid JSON input** - Returns **400 Bad Request** with an appropriate message.  
+- **Negative numbers in request** - Returns **400 Bad Request**.  
+- **Start greater than End** - Returns **400 Bad Request**.  
+- **Exceeding max numbers per request** - Returns **400 Bad Request**.  
+
+### 2. File Handling Errors  
+- **File does not exist** - Returns **404 Not Found**.  
+- **Invalid file content** - Returns **400 Bad Request**.  
+- **File is already empty** - Returns **200 OK** with an appropriate message.  
+- **Memory full (cannot write more data to file)** - Returns **507 Insufficient Storage**.  
+- **Permission denied / Access denied** - Returns **403 Forbidden**.  
+- **File write error** - Returns **500 Internal Server Error**.  
+- **Error reading file** - Returns **500 Internal Server Error**.  
 
 ## Error Handling
 
