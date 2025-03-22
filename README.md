@@ -7,23 +7,30 @@ This project implements an API that enables the generation, storage, retrieval, 
 - **Retrieve Data:** Fetches the stored sequence of numbers from the file.
 - **Delete File:** Removes the stored file when no longer needed.
 - **Robust Error Handling:** Manages edge cases gracefully, ensuring appropriate responses for invalid inputs, file access issues, and other potential failures.
-
 ## Project Structure
+### app  
+- **controllers** - Handles HTTP requests and interacts with services  
+  - `FileController` - Manages file-related API requests  
+  - `HomeController` - Default controller (optional)  
+- **exceptions** - Handles custom error management  
+  - `ErrorHandler` - Centralized error handling  
+- **models** - Defines case classes for request/response handling  
+  - `FileModels` - Contains model definitions  
+- **services** - Implements business logic, including file operations  
+  - `FileService` - Coordinates file operations using utils  
+- **utils** - Contains helper functions and utilities  
+  - `FileException` - Custom exception class for file errors  
+  - `FileReadService` - Reads data from file  
+  - `FileWriteService` - Writes data to file  
+  - `FileClearService` - Clears file content  
+- **validators** - Performs input validation to ensure correctness  
+  - `RequestValidator` - Ensures inputs are valid before processing  
 
-**app**
-- controllers - Handles HTTP requests and interacts with services
-- models - Defines case classes for request/response handling
-- services - Implements business logic, including file operations
-- validators - Performs input validation to ensure correctness
-- utils - Contains helper functions and utilities
-- views - (Optional) Used if the application serves frontend pages
-
-**conf**
-- application.conf - Stores application settings
-- routes - Defines API routes, linking HTTP endpoints to controllers
-
+### conf  
+- **application.conf** - Stores application settings  
+- **routes** - Defines API routes, linking HTTP endpoints to controllers
+  
 ## Input Handling & Validation
-
 This project ensures robust validation for all inputs by implementing:
 
 **1. JSON Structure Validation**
