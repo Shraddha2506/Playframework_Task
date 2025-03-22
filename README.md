@@ -69,12 +69,6 @@ This application includes structured error handling to manage various file-relat
 - **File write error** - Returns **500 Internal Server Error**.  
 - **Error reading file** - Returns **500 Internal Server Error**.  
 
-## Error Handling
-
-- **Returns proper HTTP error responses** for invalid inputs.  
-- **Handles file-related errors gracefully**, including storage limits.  
-- **Uses structured logging** for debugging and monitoring.  
-
 ## Running the Application
 #### Navigate to the project directory
 cd Playframework_Task
