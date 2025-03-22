@@ -13,5 +13,7 @@ object FileModels {
   implicit val saveToFileResponseFormat: Format[SaveToFileResponse] = Json.format[SaveToFileResponse]
   implicit val fetchFromFileResponseFormat: Format[FetchFromFileResponse] = Json.format[FetchFromFileResponse]
   implicit val deleteFromFileResponseFormat: Format[DeleteFromFileResponse] = Json.format[DeleteFromFileResponse]
-  implicit val failureResponseFormat: Format[FailureResponse] = Json.format[FailureResponse]
+}
+object FailureResponse {
+  implicit val failureResponseWrites: Writes[FailureResponse] = Json.writes[FailureResponse]
 }

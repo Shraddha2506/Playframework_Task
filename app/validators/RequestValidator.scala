@@ -14,7 +14,6 @@ class RequestValidator @Inject()(config: Configuration) {
   // Read values from `application.conf`
   private val filePath = Paths.get(config.get[String]("file.storage.path"))
   private val maxNumbersPerRequest: Int = config.get[Int]("file.maxNumbersPerRequest")
-  private val maxFileSize: Long = config.get[Long]("file.maxFileSize")
 
   def validateSaveToFileRequest(request: Request[JsValue]): Either[Result, SaveToFileRequest] = {
     // FIRST: Validate JSON Structure (Reject invalid JSON immediately)
@@ -28,8 +27,6 @@ class RequestValidator @Inject()(config: Configuration) {
           _ <- check(req.start >= 0 && req.end > 0, "Invalid input: Only positive numbers are allowed.")
           _ <- check(req.start <= req.end, "Invalid range: start must be <= end.")
           _ <- check((req.end - req.start + 1) <= maxNumbersPerRequest, "Input size exceeds the allowed limit.")
-          _ <- check(Files.exists(filePath) && Files.size(filePath) <= maxFileSize,
-            "Memory full: Cannot write more data to file.")
         } yield req
 
         validation.left.map(msg => Results.BadRequest(Json.toJson(FailureResponse(msg))))
